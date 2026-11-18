@@ -1,17 +1,43 @@
 # Lab 9: Incomplete if statements and inferred latches
 
-**Screenshots supplied:** 4. Original filenames and individually ordered image embeds are provided in the complete prepared archive.
+**Evidence:** 4 supplied screenshot(s).
 
-## Lab focus
+## Learning record
 
-Incomplete if statements and inferred latches — synthesis, RTL simulation, or cell-mapping evidence as indicated by the uploaded screenshot names.
+The topic is inferred from the uploaded screenshot names and, where available, the terminal logs. The source Verilog files themselves were not included in the ZIP.
 
-## Command evidence
+## Commands and log evidence
 
-No separately attributable command history was supplied for this lab. The uploaded screenshots are retained as evidence instead of inventing commands.
+No lab-specific terminal log was supplied. Screenshots document the experiment; no unverified commands have been attributed to this lab.
 
-## Evidence and limitations
+## Screenshots, in sequence
 
-These notes were organized from the uploaded **Week_2.zip** screenshots and terminal histories. They describe the observed workflow; they do not invent missing Verilog source files or claim to reproduce unprovided simulations.
+### 1. Lab 9 incomp if2 gtkwaveform
 
-The complete **75 PNG files and five original text log files** are preserved in the prepared Week2 archive provided in chat. **Binary screenshots are not yet committed to GitHub**. After uploading that archive's Week2 folder, the corresponding images will appear under each lab's `images/` directory.
+![Lab 9 incomp if2 gtkwaveform](images/Lab_9_incomp_if2_gtkwaveform.png)
+
+*Evidence: `Lab_9_incomp_if2_gtkwaveform.png`*
+
+### 2. Lab 9 incomp if2 synthesis
+
+![Lab 9 incomp if2 synthesis](images/Lab_9_incomp_if2_synthesis.png)
+
+*Evidence: `Lab_9_incomp_if2_synthesis.png`*
+
+### 3. Lab 9 incomp if waveform
+
+![Lab 9 incomp if waveform](images/Lab_9_incomp_if_waveform.png)
+
+*Evidence: `Lab_9_incomp_if_waveform.png`*
+
+### 4. Lab 9 sysnthesis of Incomp if as latch
+
+![Lab 9 sysnthesis of Incomp if as latch](images/Lab_9_sysnthesis_of_Incomp_if_as_latch.png)
+
+*Evidence: `Lab_9_sysnthesis_of_Incomp_if_as_latch.png`*
+
+## Observations and interpretation
+
+- Focus: Incomplete if statements and inferred latches.
+- Screenshots and raw logs are retained as experimental evidence.
+- Cell-level or waveform-specific results should be checked directly against the screenshots; no pass/fail result has been inferred from filenames alone.

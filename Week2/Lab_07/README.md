@@ -1,25 +1,52 @@
 # Lab 7: Unused outputs and counter optimization
 
-**Screenshots supplied:** 2. Original filenames and individually ordered image embeds are provided in the complete prepared archive.
+**Evidence:** 2 supplied screenshot(s).
 
-## Lab focus
+## Learning record
 
-Unused outputs and counter optimization — synthesis, RTL simulation, or cell-mapping evidence as indicated by the uploaded screenshot names.
+The topic is inferred from the uploaded screenshot names and, where available, the terminal logs. The source Verilog files themselves were not included in the ZIP.
 
-## Command evidence
+## Commands and log evidence
 
-Examples recorded in the supplied terminal history (not necessarily one uninterrupted successful sequence):
+Commands appearing in the supplied terminal history (some attempts may have failed; see raw log):
 
 ```console
 read_verilog counter_opt.v
 synth -top counter_opt
+!gvim  counter_opt2.v
 read_verilog counter_opt2.v
+synth -top counter_opt2.v
 synth -top counter_opt2
+./a.out
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+dfflibmap -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+dfflibmap -liberty  ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_liberty libe ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_liberty lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_liberty  ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
-## Evidence and limitations
+Raw command history (includes full tool output): `logs/Till_lab7.txt`
 
-These notes were organized from the uploaded **Week_2.zip** screenshots and terminal histories. They describe the observed workflow; they do not invent missing Verilog source files or claim to reproduce unprovided simulations.
+## Screenshots, in sequence
 
-The complete **75 PNG files and five original text log files** are preserved in the prepared Week2 archive provided in chat. **Binary screenshots are not yet committed to GitHub**. After uploading that archive's Week2 folder, the corresponding images will appear under each lab's `images/` directory.
+### 1. Lab7 Unused optimization dff counter.opt
+
+![Lab7 Unused optimization dff counter.opt](images/Lab7_Unused__optimization_dff_counter.opt.png)
+
+*Evidence: `Lab7_Unused__optimization_dff_counter.opt.png`*
+
+### 2. lab7 unused output optimization opt counter 2
+
+![lab7 unused output optimization opt counter 2](images/lab7_unused_output_optimization_opt_counter_2.png)
+
+*Evidence: `lab7_unused_output_optimization_opt_counter_2.png`*
+
+## Observations and interpretation
+
+- Focus: Unused outputs and counter optimization.
+- Screenshots and raw logs are retained as experimental evidence.
+- Cell-level or waveform-specific results should be checked directly against the screenshots; no pass/fail result has been inferred from filenames alone.

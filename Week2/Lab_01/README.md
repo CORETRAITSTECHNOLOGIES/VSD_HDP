@@ -1,17 +1,25 @@
 # Lab 1: Introduction and RTL synthesis workflow
 
-**Screenshots supplied:** 1. Original filenames and individually ordered image embeds are provided in the complete prepared archive.
+**Evidence:** 1 supplied screenshot(s).
 
-## Lab focus
+## Learning record
 
-Introduction and RTL synthesis workflow — synthesis, RTL simulation, or cell-mapping evidence as indicated by the uploaded screenshot names.
+The topic is inferred from the uploaded screenshot names and, where available, the terminal logs. The source Verilog files themselves were not included in the ZIP.
 
-## Command evidence
+## Commands and log evidence
 
-No separately attributable command history was supplied for this lab. The uploaded screenshots are retained as evidence instead of inventing commands.
+No lab-specific terminal log was supplied. Screenshots document the experiment; no unverified commands have been attributed to this lab.
 
-## Evidence and limitations
+## Screenshots, in sequence
 
-These notes were organized from the uploaded **Week_2.zip** screenshots and terminal histories. They describe the observed workflow; they do not invent missing Verilog source files or claim to reproduce unprovided simulations.
+### 1. Lab1 Introduction
 
-The complete **75 PNG files and five original text log files** are preserved in the prepared Week2 archive provided in chat. **Binary screenshots are not yet committed to GitHub**. After uploading that archive's Week2 folder, the corresponding images will appear under each lab's `images/` directory.
+![Lab1 Introduction](images/Lab1_Introduction.png)
+
+*Evidence: `Lab1_Introduction.png`*
+
+## Observations and interpretation
+
+- Focus: Introduction and RTL synthesis workflow.
+- Screenshots and raw logs are retained as experimental evidence.
+- Cell-level or waveform-specific results should be checked directly against the screenshots; no pass/fail result has been inferred from filenames alone.

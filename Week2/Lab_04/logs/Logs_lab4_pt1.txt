@@ -1,0 +1,1031 @@
+ttuser@ubuntu-desktop:~/vsd-rtl/sky130RTLDesignAndSynthesisWorkshop/verilog_files$ gvim multiple_module.v
+ttuser@ubuntu-desktop:~/vsd-rtl/sky130RTLDesignAndSynthesisWorkshop/verilog_files$ ls
+a.out                    partial_case_assign.v
+bad_case_net.v           pattern_detect_fsm_bad_style.v
+bad_case.v               pattern_detect_fsm.v
+bad_counter.v            rca.v
+bad_latch_2.v            ripple_counter.v
+bad_latch_net.v          tb_bad_case.v
+bad_latch.v              tb_bad_counter.v
+bad_mux_net.v            tb_bad_latch2.v
+bad_mux.v                tb_bad_latch.v
+bad_shift_reg2.v         tb_bad_mux.v
+bad_shift_reg.v          tb_bad_shift_reg2.v
+blocking_caveat_net.v    tb_bad_shift_reg.v
+blocking_caveat.v        tb_blocking_caveat.v
+comp_case.v              tb_comp_case.v
+counter_opt2.v           tb_counter_opt.v
+counter_opt.v            tb_demux_case.v
+demux_case.v             tb_demux_generate.v
+demux_generate.v         tb_dff_asyncres_syncres.v
+dff_ares.net.v           tb_dff_asyncres.v
+dff_asyncres_net.v       tb_dff_async_set.v
+dff_asyncres_syncres.v   tb_dff_const1.v
+dff_asyncres.v           tb_dff_const2.v
+dff_async_set.v          tb_dff_const3.v
+dff_const1.v             tb_dff_const4.v
+dff_const2.v             tb_dff_const5.v
+dff_const3.v             tb_dff_syncres.v
+dff_const4.v             tb_good_counter.v
+dff_const5.v             tb_good_latch.v
+dff_net.v                tb_good_mux.v
+dff_syncres.v            tb_good_mux.vcd
+fa.v                     tb_good_shift_reg.v
+good_counter.v           tb_incomp_case.v
+good_latch.v             tb_incomp_if2.v
+good_mux_netlist.v       tb_incomp_if.v
+good_mux.v               tb_multiple_modules.v
+good_shift_reg.v         tb_mux_generate.v
+incomp_case.v            tb_opt_check2.v
+incomp_if2.v             tb_opt_check3.v
+incomp_if.v              tb_opt_check.v
+mul2_net.v               tb_partial_case_assign.v
+mult_2.v                 tb_pattern_detect_fsm.v
+mult_8.v                 tb_rca.v
+multiple_module_opt2.v   tb_ripple_counter.v
+multiple_module_opt.v    tb_ternary_operator_mux.v
+multiple_modules_flat.v  tb_upcntr.v
+multiple_modules_hier.v  tb_up_dn_cntr.v
+multiple_modules.v       tb_up_dn_cntr_with_load.v
+mux_generate.v           tb_up_dn_cntr_with_load_with_start_stop.v
+mux_spice.v              ternary_operator_mux_net.v
+net.v                    ternary_operator_mux.v
+opt_check2.v             upcntr.v
+opt_check3.v             up_dn_cntr.v
+opt_check4.v             up_dn_cntr_with_load.v
+opt_check.v              up_dn_cntr_with_load_with_start_stop.v
+ttuser@ubuntu-desktop:~/vsd-rtl/sky130RTLDesignAndSynthesisWorkshop/verilog_files$ ^C
+ttuser@ubuntu-desktop:~/vsd-rtl/sky130RTLDesignAndSynthesisWorkshop/verilog_files$ gvim multiple_modules.v
+ttuser@ubuntu-desktop:~/vsd-rtl/sky130RTLDesignAndSynthesisWorkshop/verilog_files$ yosys
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2019  Clifford Wolf <clifford@clifford.at>           |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.9 (git sha1 1979e0b)
+
+
+yosys> synth -top multiple_modules.v
+1. Executing SYNTH pass.
+
+1.1. Executing HIERARCHY pass (managing design hierarchy).
+ERROR: Module `multiple_modules.v' not found!
+
+yosys> read_verilog multiple_modules.v
+
+2. Executing Verilog-2005 frontend: multiple_modules.v
+Parsing Verilog input from `multiple_modules.v' to AST representation.
+Generating RTLIL representation for module `\sub_module2'.
+Generating RTLIL representation for module `\sub_module1'.
+Generating RTLIL representation for module `\multiple_modules'.
+Successfully finished Verilog frontend.
+
+yosys> exit
+
+End of script. Logfile hash: 658e39f497
+CPU: user 0.04s system 0.09s, MEM: 18.62 MB total, 10.49 MB resident
+Yosys 0.9 (git sha1 1979e0b)
+Time spent: 239666700% 2x read_verilog (0 sec), 33% 1x synth (0 sec), ...
+ttuser@ubuntu-desktop:~/vsd-rtl/sky130RTLDesignAndSynthesisWorkshop/verilog_files$ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_liberty: command not found
+ttuser@ubuntu-desktop:~/vsd-rtl/sky130RTLDesignAndSynthesisWorkshop/verilog_files$ yosys
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2019  Clifford Wolf <clifford@clifford.at>           |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.9 (git sha1 1979e0b)
+
+
+yosys> read_verilog multiple_modules.v^C
+ttuser@ubuntu-desktop:~/vsd-rtl/sky130RTLDesignAndSynthesisWorkshop/verilog_files$ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_liberty: command not found
+ttuser@ubuntu-desktop:~/vsd-rtl/sky130RTLDesignAndSynthesisWorkshop/verilog_files$ yosys
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2019  Clifford Wolf <clifford@clifford.at>           |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.9 (git sha1 1979e0b)
+
+
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+1. Executing Liberty frontend.
+Imported 418 cell types from liberty file.
+
+yosys> read_verilog multiple_modules.v
+
+2. Executing Verilog-2005 frontend: multiple_modules.v
+Parsing Verilog input from `multiple_modules.v' to AST representation.
+Generating RTLIL representation for module `\sub_module2'.
+Generating RTLIL representation for module `\sub_module1'.
+Generating RTLIL representation for module `\multiple_modules'.
+Successfully finished Verilog frontend.
+
+yosys> synth -top multiple_module
+
+3. Executing SYNTH pass.
+
+3.1. Executing HIERARCHY pass (managing design hierarchy).
+ERROR: Module `multiple_module' not found!
+
+yosys> synth -top multiple_modules
+
+4. Executing SYNTH pass.
+
+4.1. Executing HIERARCHY pass (managing design hierarchy).
+
+4.1.1. Analyzing design hierarchy..
+Top module:  \multiple_modules
+Used module:     \sub_module2
+Used module:     \sub_module1
+
+4.1.2. Analyzing design hierarchy..
+Top module:  \multiple_modules
+Used module:     \sub_module2
+Used module:     \sub_module1
+Removed 0 unused modules.
+
+4.2. Executing PROC pass (convert processes to netlists).
+
+4.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+4.2.3. Executing PROC_INIT pass (extract init attributes).
+
+4.2.4. Executing PROC_ARST pass (detect async resets in processes).
+
+4.2.5. Executing PROC_MUX pass (convert decision trees to multiplexers).
+
+4.2.6. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+4.2.7. Executing PROC_DFF pass (convert process syncs to FFs).
+
+4.2.8. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module multiple_modules.
+Optimizing module sub_module1.
+Optimizing module sub_module2.
+
+4.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \multiple_modules..
+Finding unused cells or wires in module \sub_module1..
+Finding unused cells or wires in module \sub_module2..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~2 debug messages>
+
+4.5. Executing CHECK pass (checking for obvious problems).
+checking module multiple_modules..
+checking module sub_module1..
+checking module sub_module2..
+found and reported 0 problems.
+
+4.6. Executing OPT pass (performing simple optimizations).
+
+4.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module multiple_modules.
+Optimizing module sub_module1.
+Optimizing module sub_module2.
+
+4.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\multiple_modules'.
+Finding identical cells in module `\sub_module1'.
+Finding identical cells in module `\sub_module2'.
+Removed a total of 0 cells.
+
+4.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \multiple_modules..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \sub_module1..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \sub_module2..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+4.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \multiple_modules.
+  Optimizing cells in module \sub_module1.
+  Optimizing cells in module \sub_module2.
+Performed a total of 0 changes.
+
+4.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\multiple_modules'.
+Finding identical cells in module `\sub_module1'.
+Finding identical cells in module `\sub_module2'.
+Removed a total of 0 cells.
+
+4.6.6. Executing OPT_RMDFF pass (remove dff with constant values).
+
+4.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \multiple_modules..
+Finding unused cells or wires in module \sub_module1..
+Finding unused cells or wires in module \sub_module2..
+
+4.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module multiple_modules.
+Optimizing module sub_module1.
+Optimizing module sub_module2.
+
+4.6.9. Finished OPT passes. (There is nothing left to do.)
+
+4.7. Executing WREDUCE pass (reducing word size of cells).
+
+4.8. Executing PEEPOPT pass (run peephole optimizers).
+
+4.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \multiple_modules..
+Finding unused cells or wires in module \sub_module1..
+Finding unused cells or wires in module \sub_module2..
+
+4.10. Executing TECHMAP pass (map to technology primitives).
+
+4.10.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/cmp2lut.v
+Parsing Verilog input from `/usr/bin/../share/yosys/cmp2lut.v' to AST representation.
+Generating RTLIL representation for module `\_90_lut_cmp_'.
+Successfully finished Verilog frontend.
+
+4.10.2. Continuing TECHMAP pass.
+No more expansions possible.
+
+4.11. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module multiple_modules:
+  created 0 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module sub_module1:
+  created 0 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module sub_module2:
+  created 0 $alu and 0 $macc cells.
+
+4.12. Executing SHARE pass (SAT-based resource sharing).
+
+4.13. Executing OPT pass (performing simple optimizations).
+
+4.13.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module multiple_modules.
+Optimizing module sub_module1.
+Optimizing module sub_module2.
+
+4.13.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\multiple_modules'.
+Finding identical cells in module `\sub_module1'.
+Finding identical cells in module `\sub_module2'.
+Removed a total of 0 cells.
+
+4.13.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \multiple_modules..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \sub_module1..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \sub_module2..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+4.13.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \multiple_modules.
+  Optimizing cells in module \sub_module1.
+  Optimizing cells in module \sub_module2.
+Performed a total of 0 changes.
+
+4.13.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\multiple_modules'.
+Finding identical cells in module `\sub_module1'.
+Finding identical cells in module `\sub_module2'.
+Removed a total of 0 cells.
+
+4.13.6. Executing OPT_RMDFF pass (remove dff with constant values).
+
+4.13.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \multiple_modules..
+Finding unused cells or wires in module \sub_module1..
+Finding unused cells or wires in module \sub_module2..
+
+4.13.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module multiple_modules.
+Optimizing module sub_module1.
+Optimizing module sub_module2.
+
+4.13.9. Finished OPT passes. (There is nothing left to do.)
+
+4.14. Executing FSM pass (extract and optimize FSM).
+
+4.14.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+4.14.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+4.14.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+4.14.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \multiple_modules..
+Finding unused cells or wires in module \sub_module1..
+Finding unused cells or wires in module \sub_module2..
+
+4.14.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+4.14.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+4.14.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+4.14.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+4.15. Executing OPT pass (performing simple optimizations).
+
+4.15.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module multiple_modules.
+Optimizing module sub_module1.
+Optimizing module sub_module2.
+
+4.15.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\multiple_modules'.
+Finding identical cells in module `\sub_module1'.
+Finding identical cells in module `\sub_module2'.
+Removed a total of 0 cells.
+
+4.15.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+4.15.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \multiple_modules..
+Finding unused cells or wires in module \sub_module1..
+Finding unused cells or wires in module \sub_module2..
+
+4.15.5. Finished fast OPT passes.
+
+4.16. Executing MEMORY pass.
+
+4.16.1. Executing MEMORY_DFF pass (merging $dff cells to $memrd and $memwr).
+
+4.16.2. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \multiple_modules..
+Finding unused cells or wires in module \sub_module1..
+Finding unused cells or wires in module \sub_module2..
+
+4.16.3. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+4.16.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \multiple_modules..
+Finding unused cells or wires in module \sub_module1..
+Finding unused cells or wires in module \sub_module2..
+
+4.16.5. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+4.17. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \multiple_modules..
+Finding unused cells or wires in module \sub_module1..
+Finding unused cells or wires in module \sub_module2..
+
+4.18. Executing OPT pass (performing simple optimizations).
+
+4.18.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module multiple_modules.
+Optimizing module sub_module1.
+Optimizing module sub_module2.
+
+4.18.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\multiple_modules'.
+Finding identical cells in module `\sub_module1'.
+Finding identical cells in module `\sub_module2'.
+Removed a total of 0 cells.
+
+4.18.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+4.18.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \multiple_modules..
+Finding unused cells or wires in module \sub_module1..
+Finding unused cells or wires in module \sub_module2..
+
+4.18.5. Finished fast OPT passes.
+
+4.19. Executing MEMORY_MAP pass (converting $mem cells to logic and flip-flops).
+
+4.20. Executing OPT pass (performing simple optimizations).
+
+4.20.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module multiple_modules.
+Optimizing module sub_module1.
+Optimizing module sub_module2.
+
+4.20.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\multiple_modules'.
+Finding identical cells in module `\sub_module1'.
+Finding identical cells in module `\sub_module2'.
+Removed a total of 0 cells.
+
+4.20.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \multiple_modules..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \sub_module1..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \sub_module2..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+4.20.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \multiple_modules.
+  Optimizing cells in module \sub_module1.
+  Optimizing cells in module \sub_module2.
+Performed a total of 0 changes.
+
+4.20.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\multiple_modules'.
+Finding identical cells in module `\sub_module1'.
+Finding identical cells in module `\sub_module2'.
+Removed a total of 0 cells.
+
+4.20.6. Executing OPT_RMDFF pass (remove dff with constant values).
+
+4.20.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \multiple_modules..
+Finding unused cells or wires in module \sub_module1..
+Finding unused cells or wires in module \sub_module2..
+
+4.20.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module multiple_modules.
+Optimizing module sub_module1.
+Optimizing module sub_module2.
+
+4.20.9. Finished OPT passes. (There is nothing left to do.)
+
+4.21. Executing TECHMAP pass (map to technology primitives).
+
+4.21.1. Executing Verilog-2005 frontend: <techmap.v>
+Parsing Verilog input from `<techmap.v>' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+4.21.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $and.
+No more expansions possible.
+<suppressed ~2 debug messages>
+
+4.22. Executing OPT pass (performing simple optimizations).
+
+4.22.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module multiple_modules.
+Optimizing module sub_module1.
+Optimizing module sub_module2.
+
+4.22.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\multiple_modules'.
+Finding identical cells in module `\sub_module1'.
+Finding identical cells in module `\sub_module2'.
+Removed a total of 0 cells.
+
+4.22.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+4.22.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \multiple_modules..
+Finding unused cells or wires in module \sub_module1..
+Finding unused cells or wires in module \sub_module2..
+
+4.22.5. Finished fast OPT passes.
+
+4.23. Executing ABC pass (technology mapping using ABC).
+
+4.23.1. Extracting gate netlist of module `\multiple_modules' to `<abc-temp-dir>/input.blif'..
+Extracted 0 gates and 0 wires to a netlist network with 0 inputs and 0 outputs.
+Don't call ABC as there is nothing to map.
+Removing temp directory.
+
+4.23.2. Extracting gate netlist of module `\sub_module1' to `<abc-temp-dir>/input.blif'..
+Extracted 1 gates and 3 wires to a netlist network with 2 inputs and 1 outputs.
+
+4.23.2.1. Executing ABC.
+Running ABC command: berkeley-abc -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 17 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + retime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+4.23.2.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        1
+ABC RESULTS:        internal signals:        0
+ABC RESULTS:           input signals:        2
+ABC RESULTS:          output signals:        1
+Removing temp directory.
+
+4.23.3. Extracting gate netlist of module `\sub_module2' to `<abc-temp-dir>/input.blif'..
+Extracted 1 gates and 3 wires to a netlist network with 2 inputs and 1 outputs.
+
+4.23.3.1. Executing ABC.
+Running ABC command: berkeley-abc -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 17 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + retime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+4.23.3.2. Re-integrating ABC results.
+ABC RESULTS:                OR cells:        1
+ABC RESULTS:        internal signals:        0
+ABC RESULTS:           input signals:        2
+ABC RESULTS:          output signals:        1
+Removing temp directory.
+
+4.24. Executing OPT pass (performing simple optimizations).
+
+4.24.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module multiple_modules.
+Optimizing module sub_module1.
+Optimizing module sub_module2.
+
+4.24.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\multiple_modules'.
+Finding identical cells in module `\sub_module1'.
+Finding identical cells in module `\sub_module2'.
+Removed a total of 0 cells.
+
+4.24.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+4.24.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \multiple_modules..
+Finding unused cells or wires in module \sub_module1..
+Finding unused cells or wires in module \sub_module2..
+Removed 0 unused cells and 6 unused wires.
+<suppressed ~2 debug messages>
+
+4.24.5. Finished fast OPT passes.
+
+4.25. Executing HIERARCHY pass (managing design hierarchy).
+
+4.25.1. Analyzing design hierarchy..
+Top module:  \multiple_modules
+Used module:     \sub_module1
+Used module:     \sub_module2
+
+4.25.2. Analyzing design hierarchy..
+Top module:  \multiple_modules
+Used module:     \sub_module1
+Used module:     \sub_module2
+Removed 0 unused modules.
+
+4.26. Printing statistics.
+
+=== multiple_modules ===
+
+   Number of wires:                  5
+   Number of wire bits:              5
+   Number of public wires:           5
+   Number of public wire bits:       5
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  2
+     sub_module1                     1
+     sub_module2                     1
+
+=== sub_module1 ===
+
+   Number of wires:                  3
+   Number of wire bits:              3
+   Number of public wires:           3
+   Number of public wire bits:       3
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  1
+     $_AND_                          1
+
+=== sub_module2 ===
+
+   Number of wires:                  3
+   Number of wire bits:              3
+   Number of public wires:           3
+   Number of public wire bits:       3
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  1
+     $_OR_                           1
+
+=== design hierarchy ===
+
+   multiple_modules                  1
+     sub_module1                     1
+     sub_module2                     1
+
+   Number of wires:                 11
+   Number of wire bits:             11
+   Number of public wires:          11
+   Number of public wire bits:      11
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  2
+     $_AND_                          1
+     $_OR_                           1
+
+4.27. Executing CHECK pass (checking for obvious problems).
+checking module multiple_modules..
+checking module sub_module1..
+checking module sub_module2..
+found and reported 0 problems.
+
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+5. Executing ABC pass (technology mapping using ABC).
+
+5.1. Extracting gate netlist of module `\multiple_modules' to `<abc-temp-dir>/input.blif'..
+Extracted 0 gates and 0 wires to a netlist network with 0 inputs and 0 outputs.
+Don't call ABC as there is nothing to map.
+Removing temp directory.
+
+5.2. Extracting gate netlist of module `\sub_module1' to `<abc-temp-dir>/input.blif'..
+Extracted 1 gates and 3 wires to a netlist network with 2 inputs and 1 outputs.
+
+5.2.1. Executing ABC.
+Running ABC command: berkeley-abc -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /home/ttuser/vsd-rtl/sky130RTLDesignAndSynthesisWorkshop/verilog_files/../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.21 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_12" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_3" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_6" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__diode_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_8".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__edfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__edfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_0".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_8".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_bleeder_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_12" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_3" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_6" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__lpflow_inputisolatch_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfsbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_4".
+ABC: Library "sky130_fd_sc_hd__tt_025C_1v80" from "/home/ttuser/vsd-rtl/sky130RTLDesignAndSynthesisWorkshop/verilog_files/../lib/sky130_fd_sc_hd__tt_025C_1v80.lib" has 324 cells (94 skipped: 63 seq; 13 tri-state; 18 no func; 0 dont_use).  Time =     0.27 sec
+ABC: Memory =   15.77 MB. Time =     0.27 sec
+ABC: Warning: Detected 9 multi-output gates (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + strash 
+ABC: + ifraig 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + retime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+5.2.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__and2_0 cells:        1
+ABC RESULTS:        internal signals:        0
+ABC RESULTS:           input signals:        2
+ABC RESULTS:          output signals:        1
+Removing temp directory.
+
+5.3. Extracting gate netlist of module `\sub_module2' to `<abc-temp-dir>/input.blif'..
+Extracted 1 gates and 3 wires to a netlist network with 2 inputs and 1 outputs.
+
+5.3.1. Executing ABC.
+Running ABC command: berkeley-abc -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /home/ttuser/vsd-rtl/sky130RTLDesignAndSynthesisWorkshop/verilog_files/../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.17 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_12" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_3" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_6" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__diode_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_8".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__edfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__edfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_0".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_8".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_bleeder_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_12" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_3" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_6" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__lpflow_inputisolatch_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfsbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_4".
+ABC: Library "sky130_fd_sc_hd__tt_025C_1v80" from "/home/ttuser/vsd-rtl/sky130RTLDesignAndSynthesisWorkshop/verilog_files/../lib/sky130_fd_sc_hd__tt_025C_1v80.lib" has 324 cells (94 skipped: 63 seq; 13 tri-state; 18 no func; 0 dont_use).  Time =     0.22 sec
+ABC: Memory =   15.77 MB. Time =     0.22 sec
+ABC: Warning: Detected 9 multi-output gates (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + strash 
+ABC: + ifraig 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + retime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+5.3.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__or2_0 cells:        1
+ABC RESULTS:        internal signals:        0
+ABC RESULTS:           input signals:        2
+ABC RESULTS:          output signals:        1
+Removing temp directory.
+
+yosys> show
+
+6. Generating Graphviz representation of design.
+ERROR: For formats different than 'ps' or 'dot' only one module must be selected.
+
+yosys> show multiple_modules
+
+7. Generating Graphviz representation of design.
+Writing dot description to `/home/ttuser/.yosys_show.dot'.
+Dumping module multiple_modules to page 1.
+Exec: { test -f '/home/ttuser/.yosys_show.dot.pid' && fuser -s '/home/ttuser/.yosys_show.dot.pid'; } || ( echo $$ >&3; exec xdot '/home/ttuser/.yosys_show.dot'; ) 3> '/home/ttuser/.yosys_show.dot.pid' &
+
+yosys> write_verilog multiple_modules_hier.v
+
+8. Executing Verilog backend.
+Dumping module `\multiple_modules'.
+Dumping module `\sub_module1'.
+Dumping module `\sub_module2'.
+
+yosys> !gvim multiple_modules_hier.v
+
+9. Shell command: gvim multiple_modules_hier.v
+
+yosys> write_verilog -noattr  multiple_modules_hier.v
+
+10. Executing Verilog backend.
+Dumping module `\multiple_modules'.
+Dumping module `\sub_module1'.
+Dumping module `\sub_module2'.
+
+yosys> !gvim multiple_modules_hier.v
+
+11. Shell command: gvim multiple_modules_hier.v
+
+yosys> write_verilog multiple_modules_hier.v
+
+12. Executing Verilog backend.
+Dumping module `\multiple_modules'.
+Dumping module `\sub_module1'.
+Dumping module `\sub_module2'.
+
+yosys> write_verilog -noattr  multiple_modules_hier.v
+
+13. Executing Verilog backend.
+Dumping module `\multiple_modules'.
+Dumping module `\sub_module1'.
+Dumping module `\sub_module2'.
+
+yosys> !gvim multiple_modules_hier.v
+
+14. Shell command: gvim multiple_modules_hier.v
+
+yosys> 
